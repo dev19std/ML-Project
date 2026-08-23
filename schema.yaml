@@ -1,13 +1,13 @@
 COLUMNS:
-  alcohol: float
+  fixed acidity: float
+  volatile acidity: float
+  citric acid: float
+  residual sugar: float
   chlorides: float
-  citric_acid: float
+  free sulfur dioxide: float
+  total sulfur dioxide: float
   density: float
-  fixed_acidity: float
-  free_sulfur_dioxide: float
   pH: float
-  residual_sugar: float
   sulphates: float
-  total_sulfur_dioxide: float
-  volatile_acidity: float
+  alcohol: float
   quality: int
