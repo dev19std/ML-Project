@@ -2,10 +2,12 @@ from ML_project.constants import *
 from ML_project.utils.common import create_directories, read_yaml
 from ML_project.entity.congif_entity import (
     DataIngenstionConfig,
-    DataValidationConfig
+    DataValidationConfig,
+    DataTransformationConfig,
+    ModelTrainerConfig
 )
 
-from src.ML_project.constants import (
+from ML_project.constants import (
     CONFIG_FILE_PATH,
     PARAMS_FILE_PATH,
     SCHEMA_FILE_PATH
@@ -53,3 +55,37 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path
+        )
+
+        return data_transformation_config
+
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.ElasticNet
+        schema = self.schema.TARGET_COLUMN
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+        root_dir=config.root_dir,
+        train_data_path=config.train_data_path,
+        test_data_path=config.test_data_path,
+        model_name=config.model_name,
+        alpha=params.alpha,
+        l1_ratio=params.l1_ratio,
+        target_column=schema.name
+    )
+
+        return model_trainer_config

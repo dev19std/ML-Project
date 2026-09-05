@@ -1,1 +1,6 @@
 IMAGE_SIZE: [224, 224]
+
+ElasticNet:
+  alpha: 0.5
+  l1_ratio: 0.7
+  
